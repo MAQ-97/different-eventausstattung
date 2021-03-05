@@ -106,7 +106,7 @@ const LoginScreen = (props) => {
             }}>
             Not a customer?
           </Title>
-          <TouchableOpacity style={{backgroundColor: '#9e8035'}}>
+          <TouchableOpacity style={{backgroundColor: '#9e8035'}} onPress={() => props.navigation.navigate('RegisterScreen')}>
             <Text
               style={{
                 alignSelf: 'center',

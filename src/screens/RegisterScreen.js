@@ -14,6 +14,21 @@ const RegisterScreen = (props) => {
   const [cpassword, setCpassword] = useState('');
   const [checked, setChecked] = React.useState(false);
 
+  const handleValidation = () => {
+    if(solutation == ''){
+      alert('Please Enter Solutation!!!');
+    }else if(name == ''){
+      alert('Please Enter Name!!!');
+    }else if(email == ''){
+      alert('Please Enter Email!!!');
+    }else if(password == '' || cpassword == ''){
+      alert('Please Enter Password!!!');
+    }else if(password != cpassword){
+      alert('Confirm Password Incorrect!!!');
+    }else{
+      alert('Succussfully Validated!!!');
+    }
+  }
 
   return (
     <>
@@ -114,7 +129,7 @@ const RegisterScreen = (props) => {
             />
           }
         />
-        <TouchableOpacity style={{backgroundColor: '#9e8035', marginVertical: 20}}>
+        <TouchableOpacity style={{backgroundColor: '#9e8035', marginVertical: 20}} onPress={() => handleValidation()}>
           <Text
             style={{
               alignSelf: 'center',
