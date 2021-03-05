@@ -11,6 +11,7 @@ import Favorite from './Favorite';
 import Cart from './Cart';
 import Account from './Account';
 import LoginScreen from './LoginScreen';
+import RegisterScreen from './RegisterScreen';
 
 const ShopStack = createStackNavigator();
 const AboutStack = createStackNavigator();
@@ -99,6 +100,7 @@ const AccountStackScreen = ({navigation}) => {
   return (
     <AccountStack.Navigator headerMode="none">
       <AccountStack.Screen name="LoginScreen" component={LoginScreen} />
+      <AccountStack.Screen name="RegisterScreen" component={RegisterScreen} />
       <AccountStack.Screen name="Account" component={Account} />
     </AccountStack.Navigator>
   );

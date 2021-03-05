@@ -13,9 +13,10 @@ const LoginScreen = (props) => {
       <Header />
       <View
         style={{
+          flex: 1,
           paddingHorizontal: '2.8%',
-          height: '81%',
           backgroundColor: '#fff',
+          marginBottom: 50,
         }}>
         <ScrollView>
           <Title style={{alignSelf: 'center', marginTop: 15}}>Login</Title>
@@ -124,6 +125,7 @@ const LoginScreen = (props) => {
               alignSelf: 'center',
               color: '#505050',
               textAlign: 'center',
+              paddingBottom: 15
             }}>
             Device: OnePlus A5010{'\n'}Android-Version: 10 (Api 29){'\n'}
             App-Version: 1.1 (3){'\n'}Device-ID:

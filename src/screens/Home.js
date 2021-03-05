@@ -8,7 +8,7 @@ const Home = () => {
     <>
       <Header />
       <View
-        style={{flex: 1, paddingHorizontal: '2.8%', backgroundColor: '#fff'}}>
+        style={{flex: 1, paddingHorizontal: '2.8%', backgroundColor: '#fff', marginBottom: 50}}>
         <SafeAreaView style={{flex: 1}}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{alignItems: 'center'}}>
