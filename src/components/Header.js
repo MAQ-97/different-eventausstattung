@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <View style={styles.headerContainer}>
       <Image
-        source={require('../images/logo.png')}
+        source={require('../images/Logo.png')}
         resizeMode="contain"
         style={styles.headerImg}
       />

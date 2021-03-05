@@ -1,14 +1,16 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Text} from 'react-native';
+import TabComponent from '../components/Tab';
 
 import Home from './Home';
 import About from './About';
 import Favorite from './Favorite';
 import Cart from './Cart';
 import Account from './Account';
+import LoginScreen from './LoginScreen';
 
 const ShopStack = createStackNavigator();
 const AboutStack = createStackNavigator();
@@ -21,12 +23,39 @@ const Tab = createBottomTabNavigator();
 const index = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Shop" component={ShopStackScreen} />
-        <Tab.Screen name="About" component={AboutStackScreen} />
-        <Tab.Screen name="Favorite" component={FavoriteStackScreen} />
-        <Tab.Screen name="Cart" component={CartStackScreen} />
-        <Tab.Screen name="Account" component={AccountStackScreen} />
+      <Tab.Navigator
+        tabBarOptions={{
+          style: {
+            //height: '13.5%',
+            alignItems: 'flex-end',
+            backgroundColor: '#30104e',
+            borderTopWidth: 0,
+            position: 'absolute',
+            //left: 20,
+            //right: 20,
+            //bottom: margbot,
+            //elevation: 0,
+          },
+        }}>
+        <Tab.Screen
+          name="Home"
+          component={ShopStackScreen}
+          options={{
+            tabBarButton: (props) => <TabComponent label="Home" {...props} />,
+          }}
+        />
+        <Tab.Screen name="About" component={AboutStackScreen} options={{
+            tabBarButton: (props) => <TabComponent label="About" {...props} />,
+          }} />
+        <Tab.Screen name="Favorite" component={FavoriteStackScreen} options={{
+            tabBarButton: (props) => <TabComponent label="Favorite" {...props} />,
+          }}/>
+        <Tab.Screen name="Cart" component={CartStackScreen} options={{
+            tabBarButton: (props) => <TabComponent label="Cart" {...props} />,
+          }}/>
+        <Tab.Screen name="Account" component={AccountStackScreen} options={{
+            tabBarButton: (props) => <TabComponent label="Account" {...props} />,
+          }}/>
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -43,33 +72,34 @@ const ShopStackScreen = ({navigation}) => {
 };
 
 const AboutStackScreen = ({navigation}) => {
-    return (
-      <AboutStack.Navigator headerMode="none">
-        <AboutStack.Screen name="About" component={About} />
-      </AboutStack.Navigator>
-    );
-  };
+  return (
+    <AboutStack.Navigator headerMode="none">
+      <AboutStack.Screen name="About" component={About} />
+    </AboutStack.Navigator>
+  );
+};
 
-  const FavoriteStackScreen = ({navigation}) => {
-    return (
-      <FavoriteStack.Navigator headerMode="none">
-        <FavoriteStack.Screen name="Favorite" component={Favorite} />
-      </FavoriteStack.Navigator>
-    );
-  };
+const FavoriteStackScreen = ({navigation}) => {
+  return (
+    <FavoriteStack.Navigator headerMode="none">
+      <FavoriteStack.Screen name="Favorite" component={Favorite} />
+    </FavoriteStack.Navigator>
+  );
+};
 
-  const CartStackScreen = ({navigation}) => {
-    return (
-      <CartStack.Navigator headerMode="none">
-        <CartStack.Screen name="Cart" component={Cart} />
-      </CartStack.Navigator>
-    );
-  };
+const CartStackScreen = ({navigation}) => {
+  return (
+    <CartStack.Navigator headerMode="none">
+      <CartStack.Screen name="Cart" component={Cart} />
+    </CartStack.Navigator>
+  );
+};
 
-  const AccountStackScreen = ({navigation}) => {
-    return (
-      <AccountStack.Navigator headerMode="none">
-        <AccountStack.Screen name="Account" component={Account} />
-      </AccountStack.Navigator>
-    );
-  };
+const AccountStackScreen = ({navigation}) => {
+  return (
+    <AccountStack.Navigator headerMode="none">
+      <AccountStack.Screen name="LoginScreen" component={LoginScreen} />
+      <AccountStack.Screen name="Account" component={Account} />
+    </AccountStack.Navigator>
+  );
+};

@@ -5,10 +5,12 @@ import Category from '../components/Category';
 
 const Home = () => {
   return (
-    <View style={{flex: 1, paddingHorizontal: '2.8%'}}>
+    <>
+    <Header />
+    <View style={{flex: 1, paddingHorizontal: '2.8%', backgroundColor: '#fff'}}>
       <SafeAreaView style={{flex: 1}}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Header />
+          
           <View style={{alignItems: 'center'}}>
             <Text
               style={{
@@ -75,6 +77,7 @@ const Home = () => {
         </ScrollView>
       </SafeAreaView>
     </View>
+    </>
   );
 };
 
