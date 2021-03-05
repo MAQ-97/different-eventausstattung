@@ -3,12 +3,14 @@ import {Text, Image, View} from 'react-native';
 
 const Category = (props) => {
   return (
-    <View>
+    <>
       <View
         style={{
           flexDirection: 'column',
-          padding: 15,
+          padding: 10,
           alignItems: 'center',
+          flexBasis: '33.33%',
+          // backgroundColor: ,
           // justifyContent: 'center',
         }}>
         <Image
@@ -24,9 +26,20 @@ const Category = (props) => {
         />
 
         {/* <Text style={{marginTop: 5}}>Porzellan</Text> */}
-        <Text style={{marginTop: 5}}>{props.label}</Text>
+        <Text
+          style={{
+            marginTop: 5,
+            //backgroundColor: 'green',
+            textAlign: 'center',
+            fontSize: 11,
+
+            // alignItems: 'center',
+          }}
+          numberOfLines={3}>
+          {props.label}
+        </Text>
       </View>
-    </View>
+    </>
   );
 };
 

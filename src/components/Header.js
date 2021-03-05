@@ -6,23 +6,63 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 
 const Header = () => {
   return (
-    <View style={styles.headerContainer}>
-      <Image
-        source={require('../images/Logo.png')}
-        resizeMode="contain"
-        style={styles.headerImg}
-      />
+    // <View style={styles.headerContainer}>
+    //   <Image
+    //     source={require('../images/logo.png')}
+    //     resizeMode="contain"
+    //     style={styles.headerImg}
+    //   />
 
-      <View style={styles.iconView}>
+    //   <View style={styles.iconView}>
+    //     <Ionicons name="search" size={25} style={{color: '#fff'}} />
+    //   </View>
+    //   <Octicons
+    //     name="kebab-vertical"
+    //     size={30}
+    //     style={{paddingLeft: 15, color: '#44196c'}}
+    //   />
+
+    //   {/* </View> */}
+    // </View>
+
+    <View style={styles.headerContainer}>
+      <View style={{justifyContent: 'flex-start'}}>
+        <Image
+          source={require('../images/logo.png')}
+          resizeMode="contain"
+          style={styles.headerImg}
+        />
+      </View>
+      <View
+        style={{
+          // justifyContent: 'flex-end',
+          position: 'absolute',
+          height: 42,
+          width: 42,
+          right: 45,
+          borderRadius: 21.5,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: '#9e8035',
+        }}>
         <Ionicons name="search" size={25} style={{color: '#fff'}} />
       </View>
+
       <Octicons
         name="kebab-vertical"
         size={30}
-        style={{paddingLeft: 15, color: '#44196c'}}
+        style={{
+          // paddingLeft: 15,
+          justifyContent: 'flex-end',
+          color: '#44196c',
+          position: 'absolute',
+          justifyContent: 'center',
+          alignItems: 'center',
+          // left: 20,
+          right: 25,
+          // left: 155,
+        }}
       />
-
-      {/* </View> */}
     </View>
   );
 };
@@ -34,7 +74,7 @@ const styles = StyleSheet.create({
   },
 
   headerImg: {
-    height: 90,
+    height: 80,
     width: 150,
     //   backgroundColor: 'green',
     marginLeft: 10,
