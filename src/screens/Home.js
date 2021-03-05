@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <View style={{flex: 1, paddingHorizontal: '2.8%'}}>
       <SafeAreaView style={{flex: 1}}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <Header />
           <View style={{alignItems: 'center'}}>
             <Text
@@ -72,28 +72,6 @@ const Home = () => {
               imageUri={require(`../images/Porzelian.png`)}
             />
           </View>
-
-          <Image
-            source={require('../images/Glaser.png')}
-            style={{
-              height: 80,
-              width: 80,
-              borderRadius: 40,
-              // marginLeft: 30,
-            }}
-            resizeMode="cover"
-          />
-
-          <Image
-            source={require('../images/Besteck.png')}
-            style={{
-              height: 80,
-              width: 80,
-              borderRadius: 40,
-              // marginLeft: 30,
-            }}
-            resizeMode="cover"
-          />
         </ScrollView>
       </SafeAreaView>
     </View>
