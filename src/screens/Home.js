@@ -1,16 +1,47 @@
-import React from 'react';
-import {Image, SafeAreaView, ScrollView, Text, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  FlatList,
+  Image,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+} from 'react-native';
 import Header from '../components/Header';
 import Category from '../components/Category';
+import axios from 'axios';
+import Woocommerce from '../functions/Woocommerce';
 
 const Home = () => {
+  const [data, setData] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    Woocommerce.getCategories()
+      .then((res) => {
+        setCategories(res.data);
+        setIsLoaded(true);
+        console.log(res.data, 'response');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <>
       <Header />
       <View
-        style={{flex: 1, paddingHorizontal: '2.8%', backgroundColor: '#fff', marginBottom: 50}}>
+        style={{
+          flex: 1,
+          paddingHorizontal: '2.8%',
+          // backgroundColor: 'red',
+          marginBottom: 50,
+        }}>
         <SafeAreaView style={{flex: 1}}>
           <ScrollView showsVerticalScrollIndicator={false}>
+            {/* <> */}
             <View style={{alignItems: 'center'}}>
               <Text
                 style={{
@@ -22,60 +53,22 @@ const Home = () => {
                 SHOP
               </Text>
             </View>
-            <View
-              style={{
-                // backgroundColor: 'red',
-                flexDirection: 'row',
-                justifyContent: 'center',
-                flexWrap: 'wrap',
-                // backgroundColor: 'green',
-              }}>
-              <Category
-                label="Porzelian"
-                imageUri={require(`../images/Porzelian.png`)}
-              />
-              <Category
-                label="Gläser"
-                imageUri={require(`../images/Glaser.png`)}
-              />
-              <Category
-                label="Besteck"
-                imageUri={require(`../images/Besteck.png`)}
-              />
-              {/* </View> */}
 
-              <Category
-                label="Tische & Stehtische"
-                imageUri={require(`../images/Tische.png`)}
-              />
-              <Category
-                label="Stühle & Barhocker"
-                imageUri={require(`../images/Barhocker.png`)}
-              />
-              <Category
-                label="Loungemobiliar"
-                imageUri={require(`../images/Lounge.png`)}
-              />
-
-              <Category
-                label="Theken und
-                Buffetsysteme"
-                imageUri={require(`../images/Theken.png`)}
-              />
-              <Category
-                label="Tischwäsche"
-                imageUri={require(`../images/Tisc.png`)}
-              />
-              <Category
-                label="Küchen und
-                Gastronomieaus-
-                stattung"
-                imageUri={require(`../images/kuchen.png`)}
-              />
-              <Category
-                label="Verschiedenes"
-                imageUri={require(`../images/versc.png`)}
-              />
+            <View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  flexWrap: 'wrap',
+                }}>
+                {categories.map((item, index) => (
+                  <Category
+                    key={index}
+                    label={item.name}
+                    imageUri={{uri: item.image.src}}
+                  />
+                ))}
+              </View>
             </View>
           </ScrollView>
         </SafeAreaView>
@@ -83,5 +76,4 @@ const Home = () => {
     </>
   );
 };
-
 export default Home;

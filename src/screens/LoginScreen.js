@@ -1,12 +1,27 @@
+import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
 import {Title, Text, TextInput} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import {apiActiveURL} from '../../ApiBaseUrl';
 import Header from '../components/Header';
 
 const LoginScreen = (props) => {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
+
+  const url = `${apiActiveURL}/user/generate_auth_cookie/?insecure=cool&username=${user}&password=${password}`;
+
+  const authenticate = () => {
+    axios.post(url).then(function (response) {
+      console.log(response);
+      if (response.data.status === 'ok') {
+        alert('Login Successfully');
+      } else {
+        alert('Invalid Email or Password');
+      }
+    });
+  };
 
   return (
     <>
@@ -86,7 +101,9 @@ const LoginScreen = (props) => {
               Forget Password?
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{backgroundColor: '#9e8035'}}>
+          <TouchableOpacity
+            style={{backgroundColor: '#9e8035'}}
+            onPress={() => authenticate()}>
             <Text
               style={{
                 alignSelf: 'center',
@@ -106,7 +123,9 @@ const LoginScreen = (props) => {
             }}>
             Not a customer?
           </Title>
-          <TouchableOpacity style={{backgroundColor: '#9e8035'}} onPress={() => props.navigation.navigate('RegisterScreen')}>
+          <TouchableOpacity
+            style={{backgroundColor: '#9e8035'}}
+            onPress={() => props.navigation.navigate('RegisterScreen')}>
             <Text
               style={{
                 alignSelf: 'center',
@@ -125,7 +144,7 @@ const LoginScreen = (props) => {
               alignSelf: 'center',
               color: '#505050',
               textAlign: 'center',
-              paddingBottom: 15
+              paddingBottom: 15,
             }}>
             Device: OnePlus A5010{'\n'}Android-Version: 10 (Api 29){'\n'}
             App-Version: 1.1 (3){'\n'}Device-ID:

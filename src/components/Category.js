@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Text, Image, View} from 'react-native';
+import axios from 'axios';
 
 const Category = (props) => {
+  const [data, setData] = useState([]);
+
   return (
     <>
       <View
@@ -10,7 +13,7 @@ const Category = (props) => {
           padding: 10,
           alignItems: 'center',
           flexBasis: '33.33%',
-          // backgroundColor: ,
+          // backgroundColor: 'red',
           // justifyContent: 'center',
         }}>
         <Image
